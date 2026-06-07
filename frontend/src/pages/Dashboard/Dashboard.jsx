@@ -1,69 +1,74 @@
 import Sidebar from "../../components/Sidebar/Sidebar";
 import Navbar from "../../components/Navbar/Navbar";
+import StatCard from "../../components/StatCard/StatCard";
+import ActivityFeed from "../../components/ActivityFeed/ActivityFeed";
+import TaskManager from "../../components/Tasks/TaskManager";
+
+import {
+  FaTasks,
+  FaCheck,
+  FaSpinner,
+  FaExclamation,
+} from "react-icons/fa";
+
 import "./Dashboard.css";
 
 function Dashboard() {
   return (
     <div className="dashboard">
+
+      {/* SIDEBAR */}
       <Sidebar />
 
+      {/* MAIN CONTENT */}
       <div className="main-content">
+
         <Navbar />
 
         <div className="dashboard-content">
+
+          {/* STATS */}
           <div className="stats-grid">
-            <div className="stat-card">
-              <h4>Total Tasks</h4>
-              <h2>0</h2>
-            </div>
+            <StatCard
+              title="Total Tasks"
+              count="0"
+              icon={<FaTasks />}
+              color="#6366f1"
+            />
 
-            <div className="stat-card">
-              <h4>Completed</h4>
-              <h2>0</h2>
-            </div>
+            <StatCard
+              title="Completed"
+              count="0"
+              icon={<FaCheck />}
+              color="#10b981"
+            />
 
-            <div className="stat-card">
-              <h4>In Progress</h4>
-              <h2>0</h2>
-            </div>
+            <StatCard
+              title="In Progress"
+              count="0"
+              icon={<FaSpinner />}
+              color="#f59e0b"
+            />
 
-            <div className="stat-card">
-              <h4>Overdue</h4>
-              <h2>0</h2>
-            </div>
+            <StatCard
+              title="Overdue"
+              count="0"
+              icon={<FaExclamation />}
+              color="#ef4444"
+            />
           </div>
 
+          {/* TASK MANAGER (IMPORTANT FIX) */}
           <div className="dashboard-row">
+
             <div className="tasks-section">
-              <h3>Recent Tasks</h3>
-
-              <table>
-                <thead>
-                  <tr>
-                    <th>Task</th>
-                    <th>Status</th>
-                    <th>Priority</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  <tr>
-                    <td>No Tasks Yet</td>
-                    <td>-</td>
-                    <td>-</td>
-                  </tr>
-                </tbody>
-              </table>
+              <TaskManager />
             </div>
 
-            <div className="activity-section">
-              <h3>Recent Activity</h3>
+            <ActivityFeed />
 
-              <div className="activity-item">
-                No activity yet
-              </div>
-            </div>
           </div>
+
         </div>
       </div>
     </div>

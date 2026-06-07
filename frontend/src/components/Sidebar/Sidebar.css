@@ -7,30 +7,40 @@
 }
 
 .logo {
-  font-size: 28px;
+  font-size: 26px;
   font-weight: bold;
-  margin-bottom: 50px;
+  margin-bottom: 40px;
 }
 
 .sidebar ul {
   list-style: none;
+  padding: 0;
 }
 
 .sidebar li {
   display: flex;
   align-items: center;
   gap: 12px;
-  padding: 14px;
+
+  padding: 12px;
   margin-bottom: 10px;
-  border-radius: 12px;
-  cursor: pointer;
+
+  border-radius: 10px;
   transition: 0.3s;
+  cursor: pointer;
 }
 
+/* hover */
 .sidebar li:hover {
   background: #1f2937;
 }
 
-.sidebar li.active {
+/* ACTIVE LINK */
+.link {
+  text-decoration: none;
+  color: white;
+}
+
+.link.active li {
   background: #4f46e5;
 }
