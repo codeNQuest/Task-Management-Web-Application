@@ -33,7 +33,7 @@ const handleSubmit = (e) => {
 
       <div className="login-right">
         <div className="login-card">
-          <h2>Welcome Back 👋</h2>
+          <h2>Welcome Back </h2>
 
           <p className="subtitle">
             Sign in to access your workspace

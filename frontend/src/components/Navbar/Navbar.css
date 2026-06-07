@@ -1,12 +1,54 @@
 .navbar {
+  height: 80px;
+  background: white;
+  padding: 0 30px;
+
   display: flex;
   justify-content: space-between;
   align-items: center;
 
-  padding: 20px 30px;
-  background: white;
+  border-bottom: 1px solid #eee;
+}
 
-  border-bottom: 1px solid #e5e7eb;
+.navbar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.search-box {
+  width: 400px;
+  background: #f3f4f6;
+
+  padding: 12px 18px;
+
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-box input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.notification-btn {
+  border: none;
+  background: #f3f4f6;
+  width: 45px;
+  height: 45px;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
 .profile {
@@ -16,7 +58,5 @@
 }
 
 .profile img {
-  width: 40px;
-  height: 40px;
   border-radius: 50%;
 }

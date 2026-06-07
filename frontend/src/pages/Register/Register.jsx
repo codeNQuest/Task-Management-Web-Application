@@ -52,7 +52,7 @@ function Register() {
 
       <div className="register-right">
         <div className="register-card">
-          <h2>Create Account 🚀</h2>
+          <h2>Create Account </h2>
 
           <p className="subtitle">
             Join TaskFlow and boost your productivity
