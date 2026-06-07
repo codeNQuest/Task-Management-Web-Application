@@ -1,0 +1,258 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f5f7fb;
+}
+
+.login-container {
+  min-height: 100vh;
+  display: flex;
+  overflow: hidden;
+}
+
+/* LEFT SIDE */
+
+.login-left {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(
+    135deg,
+    #4338ca,
+    #6366f1,
+    #8b5cf6
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px;
+  overflow: hidden;
+}
+
+.login-left::before {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  background: rgba(255,255,255,0.12);
+  border-radius: 50%;
+  top: -120px;
+  right: -120px;
+}
+
+.login-left::after {
+  content: "";
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  background: rgba(255,255,255,0.08);
+  border-radius: 50%;
+  bottom: -100px;
+  left: -100px;
+}
+
+.brand {
+  max-width: 500px;
+  color: white;
+  z-index: 1;
+}
+
+.brand h1 {
+  font-size: 4.5rem;
+  font-weight: 800;
+  margin-bottom: 20px;
+  letter-spacing: -2px;
+}
+
+.brand p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  opacity: 0.95;
+}
+
+.brand .tag {
+  display: inline-block;
+  padding: 8px 18px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  margin-bottom: 25px;
+  font-size: 14px;
+}
+
+/* RIGHT SIDE */
+
+.login-right {
+  flex: 1;
+  background: #f8fafc;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+}
+
+/* CARD */
+
+.login-card {
+  width: 450px;
+  background: rgba(255,255,255,0.8);
+  backdrop-filter: blur(20px);
+  padding: 45px;
+  border-radius: 24px;
+  border: 1px solid rgba(255,255,255,0.5);
+  box-shadow:
+    0 20px 40px rgba(0,0,0,0.08),
+    0 8px 16px rgba(0,0,0,0.04);
+}
+
+.login-card h2 {
+  font-size: 2rem;
+  color: #111827;
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: #6b7280;
+  margin-bottom: 35px;
+  font-size: 15px;
+}
+
+/* INPUTS */
+
+.input-group {
+  margin-bottom: 20px;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #374151;
+  font-weight: 600;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 15px;
+  border-radius: 14px;
+  border: 1px solid #e5e7eb;
+  background: white;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+}
+
+/* LOGIN BUTTON */
+
+button {
+  width: 100%;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    #4f46e5,
+    #6366f1
+  );
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(79,70,229,0.35);
+}
+
+/* EXTRA LINKS */
+
+.register-link {
+  margin-top: 25px;
+  text-align: center;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.register-link span {
+  color: #4f46e5;
+  font-weight: 600;
+  cursor: pointer;
+}
+.password-field {
+  position: relative;
+}
+
+.password-field input {
+  width: 100%;
+  padding-right: 45px;
+}
+
+.password-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6b7280;
+}
+
+.login-options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.remember-me {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #4b5563;
+  font-size: 14px;
+}
+
+.forgot-password {
+  color: #4f46e5;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.forgot-password:hover {
+  text-decoration: underline;
+}
+
+.register-link a {
+  color: #4f46e5;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+/* MOBILE */
+
+@media (max-width: 900px) {
+  .login-left {
+    display: none;
+  }
+
+  .login-right {
+    width: 100%;
+  }
+
+  .login-card {
+    width: 100%;
+    max-width: 450px;
+  }
+}
