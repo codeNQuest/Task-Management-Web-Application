@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
 import { toast } from "react-toastify";
 import "./TaskManager.css";
+import api from "../../api/axios";
 
-function TaskManager({ onStatsChange }) {
+function TaskManager({ search }) {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState("all");
 
@@ -10,92 +11,78 @@ function TaskManager({ onStatsChange }) {
   const [editMode, setEditMode] = useState(false);
   const [currentTaskId, setCurrentTaskId] = useState(null);
 
-  const [form, setForm] = useState({
-    title: "",
-    priority: "medium",
-  });
+  const [form, setForm] = useState({ title: "", priority: "medium", description: "" });
 
-  useEffect(() => {
-    if (onStatsChange) {
-      const stats = {
-        total: tasks.length,
-        completed: tasks.filter(t => t.status === "completed").length,
-        inProgress: tasks.filter(t => t.status === "pending").length,
-        overdue: 0,
-      };
-
-      onStatsChange(stats);
+  const fetchTasks = async () => {
+    try {
+      const q = search ? `?search=${encodeURIComponent(search)}` : '';
+      const res = await api.get(`/tasks${q}`);
+      setTasks(res.data);
+    } catch (err) {
+      toast.error('Failed to load tasks');
     }
-  }, [tasks]);
+  };
 
-  const addTask = () => {
+  useEffect(() => { fetchTasks(); }, [search]);
+
+  const addTask = async () => {
     if (!form.title) return toast.error("Task title required");
-
-    setTasks([
-      {
-        id: Date.now(),
-        title: form.title,
-        priority: form.priority,
-        status: "pending",
-      },
-      ...tasks,
-    ]);
-
-    setForm({ title: "", priority: "medium" });
-    setModalOpen(false);
-
-    toast.success("Task created");
+    try {
+      const res = await api.post('/tasks', { title: form.title, description: form.description, priority: form.priority, dueDate: form.dueDate });
+      setTasks(prev => [res.data, ...prev]);
+      setForm({ title: "", priority: "medium", description: "" });
+      setModalOpen(false);
+      toast.success("Task created");
+    } catch (err) {
+      toast.error('Failed to create task');
+    }
   };
 
-  const deleteTask = (id) => {
-    setTasks(tasks.filter(t => t.id !== id));
-    toast.info("Task deleted");
+  const deleteTask = async (id) => {
+    try {
+      await api.delete(`/tasks/${id}`);
+      setTasks(tasks.filter(t => t._id !== id));
+      toast.info("Task deleted");
+    } catch (err) {
+      toast.error('Failed to delete task');
+    }
   };
 
-  const toggleComplete = (id) => {
-    setTasks(
-      tasks.map(task =>
-        task.id === id
-          ? {
-              ...task,
-              status:
-                task.status === "completed" ? "pending" : "completed",
-            }
-          : task
-      )
-    );
-
-    toast.success("Task updated");
+  const toggleComplete = async (id) => {
+    try {
+      const task = tasks.find(t => t._id === id);
+      const newStatus = task.status === 'completed' ? 'pending' : 'completed';
+      const res = await api.put(`/tasks/${id}`, { status: newStatus });
+      setTasks(tasks.map(t => t._id === id ? res.data : t));
+      toast.success('Task updated');
+    } catch (err) {
+      toast.error('Failed to update task');
+    }
   };
 
   const openEdit = (task) => {
     setEditMode(true);
     setModalOpen(true);
-    setCurrentTaskId(task.id);
-    setForm({ title: task.title, priority: task.priority });
+    setCurrentTaskId(task._id);
+    setForm({ title: task.title, priority: task.priority || 'medium', description: task.description || '' });
   };
 
-  const saveEdit = () => {
-    setTasks(
-      tasks.map(task =>
-        task.id === currentTaskId
-          ? { ...task, title: form.title, priority: form.priority }
-          : task
-      )
-    );
-
-    setModalOpen(false);
-    setEditMode(false);
-    toast.success("Task updated");
+  const saveEdit = async () => {
+    try {
+      const res = await api.put(`/tasks/${currentTaskId}`, { title: form.title, priority: form.priority, description: form.description });
+      setTasks(tasks.map(t => t._id === currentTaskId ? res.data : t));
+      setModalOpen(false);
+      setEditMode(false);
+      toast.success('Task updated');
+    } catch (err) {
+      toast.error('Failed to update task');
+    }
   };
 
-  const filteredTasks = tasks.filter(task =>
-    filter === "all" ? true : task.status === filter
-  );
+  const filteredTasks = tasks.filter(task => filter === "all" ? true : task.status === filter);
 
   return (
     <div className="task-manager">
-
       {/* HEADER */}
       <div className="task-header">
         <h3>Tasks</h3>
@@ -118,13 +105,14 @@ function TaskManager({ onStatsChange }) {
         {filteredTasks.length === 0 ? (
           <p className="empty">No tasks found</p>
         ) : (
-          filteredTasks.map(task => (
-            <div key={task.id} className={`task-card ${task.status}`}>
+          <>
+            {filteredTasks.map(task => (
+              <div key={task._id} className={`task-card ${task.status}`}>
 
               <input
                 type="checkbox"
                 checked={task.status === "completed"}
-                onChange={() => toggleComplete(task.id)}
+                onChange={() => toggleComplete(task._id)}
               />
 
               <div className="task-info" onClick={() => openEdit(task)}>
@@ -139,11 +127,12 @@ function TaskManager({ onStatsChange }) {
 
               <div className="task-actions-btn">
                 <button onClick={() => openEdit(task)}>Edit</button>
-                <button onClick={() => deleteTask(task.id)}>Delete</button>
+                <button onClick={() => deleteTask(task._id)}>Delete</button>
               </div>
 
             </div>
-          ))
+            ))}
+          </>
         )}
       </div>
 

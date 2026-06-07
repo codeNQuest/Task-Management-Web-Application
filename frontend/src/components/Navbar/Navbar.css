@@ -1,62 +1,93 @@
 .navbar {
-  height: 80px;
-  background: white;
-  padding: 0 30px;
-
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  border-bottom: 1px solid #eee;
+  padding: 12px 20px;
+  background: var(--bg);
+  color: var(--text);
+  border-bottom: 1px solid #ddd;
 }
 
-.navbar-center {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-}
-
+/* SEARCH */
 .search-box {
-  width: 400px;
-  background: #f3f4f6;
-
-  padding: 12px 18px;
-
-  border-radius: 12px;
-
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  background: #f4f4f4;
+  padding: 6px 10px;
+  border-radius: 8px;
 }
 
 .search-box input {
-  width: 100%;
   border: none;
   outline: none;
   background: transparent;
 }
 
+/* RIGHT SIDE */
 .navbar-right {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 15px;
 }
 
-.notification-btn {
+.icon-btn {
+  background: transparent;
   border: none;
-  background: #f3f4f6;
-  width: 45px;
-  height: 45px;
-  border-radius: 12px;
+  font-size: 18px;
   cursor: pointer;
+  color: inherit;
 }
 
+/* NOTIFICATIONS */
+.notification-wrapper {
+  position: relative;
+}
+
+.notification-dropdown {
+  position: absolute;
+  right: 0;
+  top: 35px;
+  width: 220px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.notification-item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.notification-item:last-child {
+  border-bottom: none;
+}
+
+/* PROFILE */
 .profile {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 }
 
 .profile img {
-  border-radius: 50%;
+  border-radius: 20%;
+  width: 32px;
+  height: 32px;
+}
+
+/* DARK MODE */
+body.dark {
+  --bg: #1e1e2f;
+  --text: #ffffff;
+  background: #141421;
+}
+
+body {
+  --bg: #ffffff;
+  --text: #000000;
+  transition: all 0.3s ease;
 }

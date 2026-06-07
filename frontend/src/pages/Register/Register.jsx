@@ -1,12 +1,17 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthContext";
+import api from "../../api/axios";
 import "./Register.css";
 
 function Register() {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+  const [loading, setLoading] = useState(false);
 
   const [formData, setFormData] = useState({
     name: "",
@@ -22,7 +27,7 @@ function Register() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (formData.password !== formData.confirmPassword) {
@@ -30,9 +35,22 @@ function Register() {
       return;
     }
 
-    toast.success("Account Created Successfully");
-
-    console.log(formData);
+    setLoading(true);
+    try {
+      const res = await api.post('/auth/register', {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+      });
+      login(res.data.token, res.data.user);
+      toast.success('Account created');
+      navigate('/dashboard');
+    } catch (err) {
+      const msg = err?.response?.data?.message || 'Registration failed';
+      toast.error(msg);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -145,8 +163,8 @@ function Register() {
               </div>
             </div>
 
-            <button type="submit" className="register-btn">
-              Create Account
+            <button type="submit" className="register-btn" disabled={loading}>
+              {loading ? 'Creating Account...' : 'Create Account'}
             </button>
           </form>
 

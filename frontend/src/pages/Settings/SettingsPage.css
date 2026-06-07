@@ -1,0 +1,109 @@
+.settings-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+/* MAIN AREA */
+.settings-content {
+  flex: 1;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* TITLE */
+.settings-content h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+/* CENTER LAYOUT (IMPORTANT FIX) */
+.settings-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+/* CARD - FIXED WIDTH BUT NOT SMALL/CRAMPED */
+.settings-card {
+  width: 100%;
+  max-width: 650px;
+
+  background: white;
+  padding: 30px;
+
+  border-radius: 16px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* FORM GROUP */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-group label {
+  font-size: 13px;
+  color: #374151;
+}
+
+/* INPUTS */
+.form-group input {
+  padding: 12px 14px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+
+  outline: none;
+  font-size: 14px;
+
+  transition: 0.2s;
+}
+
+.form-group input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
+}
+
+/* SAVE BUTTON */
+.save-btn {
+  margin-top: 10px;
+
+  padding: 12px;
+
+  border: none;
+  border-radius: 10px;
+
+  background: linear-gradient(135deg, #6366f1, #4f46e5);
+  color: white;
+
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: 0.2s;
+}
+
+.save-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(99,102,241,0.3);
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .settings-content {
+    padding: 20px;
+  }
+
+  .settings-card {
+    max-width: 100%;
+  }
+}

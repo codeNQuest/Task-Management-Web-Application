@@ -1,0 +1,42 @@
+.analytics-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+.analytics-content {
+  flex: 1;
+  padding: 25px;
+}
+
+.analytics-content h2 {
+  margin-bottom: 20px;
+  color: #111827;
+}
+
+.charts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+/* CHART CARD */
+.chart-card {
+  background: white;
+  padding: 20px;
+  border-radius: 16px;
+
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.chart-card h3 {
+  margin-bottom: 15px;
+  color: #374151;
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+}

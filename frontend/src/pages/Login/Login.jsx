@@ -1,19 +1,35 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { toast } from "react-toastify";
+import { AuthContext } from "../../context/AuthContext";
+import api from "../../api/axios";
 import "./Login.css";
 
 function Login() {
   const [showPassword, setShowPassword] = useState(false);
+  const navigate = useNavigate();
+  const { login } = useContext(AuthContext);
+  const [formData, setFormData] = useState({ email: '', password: '' });
+  const [loading, setLoading] = useState(false);
 
-const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
-
-  console.log("Login Submitted");
-
-  toast.success("Login Successful");
+  setLoading(true);
+  try {
+    const res = await api.post('/auth/login', formData);
+    login(res.data.token, res.data.user);
+    toast.success('Login successful');
+    navigate('/dashboard');
+  } catch (err) {
+    const msg = err?.response?.data?.message || 'Login failed';
+    toast.error(msg);
+  } finally {
+    setLoading(false);
+  }
 };
+
+const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
 
   return (
     <div className="login-container">
@@ -45,7 +61,10 @@ const handleSubmit = (e) => {
 
               <input
                 type="email"
+                name="email"
                 placeholder="Enter your email"
+                value={formData.email}
+                onChange={handleChange}
                 required
               />
             </div>
@@ -56,7 +75,10 @@ const handleSubmit = (e) => {
               <div className="password-field">
                 <input
                   type={showPassword ? "text" : "password"}
+                  name="password"
                   placeholder="Enter your password"
+                  value={formData.password}
+                  onChange={handleChange}
                   required
                 />
 
@@ -89,8 +111,8 @@ const handleSubmit = (e) => {
               </Link>
             </div>
 
-            <button type="submit" className="login-btn">
-              Sign In
+            <button type="submit" className="login-btn" disabled={loading}>
+              {loading ? 'Signing in...' : 'Sign In'}
             </button>
           </form>
 

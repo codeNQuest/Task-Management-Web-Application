@@ -1,0 +1,51 @@
+.tasks-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f5f7fb;
+}
+
+/* MAIN CONTENT AREA */
+.tasks-content {
+  flex: 1;
+  padding: 40px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* HEADER */
+.tasks-header {
+  margin-bottom: 20px;
+}
+
+.tasks-header h2 {
+  font-size: 24px;
+  color: #111827;
+}
+
+.tasks-header p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+/* MAIN CARD (IMPORTANT FIX) */
+.tasks-card {
+  width: 100%;
+  background: white;
+
+  padding: 25px;
+  border-radius: 16px;
+
+  box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .tasks-content {
+    padding: 20px;
+  }
+}
