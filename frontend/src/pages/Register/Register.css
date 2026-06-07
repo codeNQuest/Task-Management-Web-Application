@@ -93,32 +93,52 @@ body {
   align-items: center;
   justify-content: center;
   padding: 30px;
+  transition: background-color 0.3s ease;
+}
+
+body.dark .register-right {
+  background: #0f172a;
 }
 
 /* CARD */
 
 .register-card {
   width: 460px;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(20px);
   padding: 40px;
   border-radius: 24px;
-  border: 1px solid rgba(255,255,255,0.5);
-  box-shadow:
-    0 20px 40px rgba(0,0,0,0.08),
-    0 8px 16px rgba(0,0,0,0.04);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08), 0 8px 16px rgba(0, 0, 0, 0.04);
+  transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+body.dark .register-card {
+  background: rgba(30, 41, 59, 0.95);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3), 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
 .register-card h2 {
   font-size: 2rem;
   color: #111827;
   margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+body.dark .register-card h2 {
+  color: #f1f5f9;
 }
 
 .subtitle {
   color: #6b7280;
   margin-bottom: 30px;
   font-size: 15px;
+  transition: color 0.3s ease;
+}
+
+body.dark .subtitle {
+  color: #cbd5e1;
 }
 
 /* INPUTS */
@@ -132,6 +152,11 @@ body {
   margin-bottom: 8px;
   color: #374151;
   font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+body.dark .input-group label {
+  color: #cbd5e1;
 }
 
 .input-group input {
@@ -140,14 +165,29 @@ body {
   border-radius: 14px;
   border: 1px solid #e5e7eb;
   background: white;
+  color: #111827;
   font-size: 15px;
   transition: all 0.3s ease;
+}
+
+body.dark .input-group input {
+  background: #334155;
+  color: #f1f5f9;
+  border-color: #475569;
+}
+
+.input-group input::placeholder {
+  color: #9ca3af;
+}
+
+body.dark .input-group input::placeholder {
+  color: #64748b;
 }
 
 .input-group input:focus {
   outline: none;
   border-color: #6366f1;
-  box-shadow: 0 0 0 4px rgba(99,102,241,0.15);
+  box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
 }
 
 /* PASSWORD */

@@ -6,6 +6,18 @@
   padding: 25px;
   display: flex;
   flex-direction: column;
+  position: fixed;
+  left: 0;
+  top: 0;
+  overflow-y: auto;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.3s ease;
+  z-index: 100;
+}
+
+body.dark .sidebar {
+  background: #0f172a;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
