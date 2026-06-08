@@ -9,7 +9,6 @@ body.dark .dashboard {
   background: #0f172a;
 }
 
-/* MAIN AREA */
 .main-content {
   flex: 1;
   display: flex;
@@ -17,12 +16,12 @@ body.dark .dashboard {
   margin-left: 260px;
 }
 
-/* CONTENT WRAPPER */
+
 .dashboard-content {
   padding: 25px;
 }
 
-/* STATS */
+
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -32,14 +31,14 @@ body.dark .dashboard {
   margin-top: 20px;
 }
 
-/* TASK + ACTIVITY */
+
 .dashboard-row {
   display: grid;
   grid-template-columns: 2fr 1fr;
   gap: 20px;
 }
 
-/* TASK SECTION */
+
 .tasks-section {
   background: white;
   border-radius: 12px;

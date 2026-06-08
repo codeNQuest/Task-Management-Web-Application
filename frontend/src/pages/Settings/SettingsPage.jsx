@@ -85,7 +85,7 @@ function SettingsPage() {
 
       <div className="settings-content">
 
-        <h2>Settings ⚙️</h2>
+        <h2>Settings </h2>
 
         {/* PROFILE SETTINGS */}
         <div className="settings-card">

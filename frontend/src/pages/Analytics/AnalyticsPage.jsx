@@ -78,7 +78,7 @@ function AnalyticsPage() {
 
       <div className="analytics-content">
 
-        <h2>Analytics Dashboard 📊</h2>
+        <h2>Analytics Dashboard </h2>
 
         <div className="charts-grid">
 

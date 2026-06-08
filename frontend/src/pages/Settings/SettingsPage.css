@@ -9,7 +9,7 @@ body.dark .settings-page {
   background: #0f172a;
 }
 
-/* MAIN AREA */
+
 .settings-content {
   flex: 1;
   margin-left: 260px;
@@ -19,7 +19,7 @@ body.dark .settings-page {
   flex-direction: column;
 }
 
-/* TITLE */
+
 .settings-content h2 {
   font-size: 24px;
   margin-bottom: 20px;
@@ -31,7 +31,7 @@ body.dark .settings-content h2 {
   color: #f1f5f9;
 }
 
-/* CENTER LAYOUT (IMPORTANT FIX) */
+
 .settings-wrapper {
   width: 100%;
   display: flex;
@@ -58,7 +58,6 @@ body.dark .settings-card {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
 }
 
-/* FORM GROUP */
 .form-group {
   display: flex;
   flex-direction: column;
@@ -75,7 +74,7 @@ body.dark .form-group label {
   color: #cbd5e1;
 }
 
-/* INPUTS */
+
 .form-group input {
   padding: 12px 14px;
 
@@ -93,7 +92,7 @@ body.dark .form-group label {
   box-shadow: 0 0 0 3px rgba(99,102,241,0.15);
 }
 
-/* SAVE BUTTON */
+
 .save-btn {
   margin-top: 10px;
 

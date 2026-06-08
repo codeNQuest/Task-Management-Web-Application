@@ -37,26 +37,26 @@ function Dashboard() {
       }
     };
     fetchStats();
-    // Refresh stats every 30 seconds
-    const interval = setInterval(fetchStats, 30000);
+   
+    const interval = setInterval(fetchStats, 10000);
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="dashboard">
 
-      {/* SIDEBAR */}
+     
       <Sidebar />
 
-      {/* MAIN CONTENT */}
+     
       <div className="main-content">
 
-        {/* 🔥 PASS SEARCH TO NAVBAR */}
+       
         <Navbar search={search} setSearch={setSearch} />
 
         <div className="dashboard-content">
 
-          {/* STATS */}
+         
           <div className="stats-grid">
             <StatCard
               title="Total Tasks"
@@ -87,14 +87,14 @@ function Dashboard() {
             />
           </div>
 
-          {/* MAIN SECTION */}
+         
           <div className="dashboard-row">
 
             <div className="tasks-section">
 
-              {/* PASS SEARCH DOWN TO TASKS */}
+              
               <TaskManager search={search} onStatsChange={() => {
-                // Refetch stats when tasks change
+                
                 const fetchStats = async () => {
                   try {
                     const res = await api.get('/tasks/stats');

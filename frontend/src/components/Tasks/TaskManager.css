@@ -271,9 +271,7 @@ body.dark .task-info h4 {
   z-index: 1000;
 }
 
-/* =========================
-   MODAL CARD
-========================= */
+
 .modal-card {
   width: 400px;
   background: white;

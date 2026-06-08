@@ -21,7 +21,7 @@ function Navbar({ search, setSearch }) {
         const res = await api.get('/auth/me');
         setUser(res.data);
       } catch (err) {
-        // ignore -- user may be unauthenticated
+       
       }
     };
     fetchMe();
