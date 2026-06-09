@@ -64,7 +64,7 @@ function AnalyticsPage() {
       <div className="analytics-page">
         <Sidebar />
         <div className="analytics-content">
-          <h2>Analytics Dashboard 📊</h2>
+          <h2>Analytics Dashboard </h2>
           <p>Loading analytics...</p>
         </div>
       </div>
