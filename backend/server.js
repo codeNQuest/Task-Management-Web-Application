@@ -7,7 +7,17 @@ const connectDB = require('./config/db');
 dotenv.config({ path: path.join(__dirname, '.env') });
 
 const app = express();
-app.use(cors());
+const cors = require('cors');
+
+const allowedOrigins = [
+  'http://localhost:5173',           // local dev (Vite)
+  'https://task-management-web-application-beryl.vercel.app'
+];
+
+app.use(cors({
+  origin: allowedOrigins,
+  credentials: true
+}));
 app.use(express.json());
 
 connectDB();
