@@ -2,6 +2,9 @@
 
 A modern full-stack task management web application built using the MERN Stack (MongoDB, Express.js, React.js, and Node.js). TaskFlow helps users organize, track, and manage tasks efficiently through a clean and responsive interface.
 
+Live Demo: https://task-management-web-application-beryl.vercel.app/
+
+
 ## Features
 
 ### Authentication
@@ -93,20 +96,16 @@ TaskFlow/
 ## Screenshots
 
 ### Login Page
-
-![Login](screenshots/login.png)
+<img width="1346" height="630" alt="image" src="https://github.com/user-attachments/assets/46f4bfa4-4d6d-44b5-a5c7-37dfad2254fd" />
 
 ### Dashboard
-
-![Dashboard](screenshots/dashboard.png)
+<img width="1341" height="628" alt="image" src="https://github.com/user-attachments/assets/46b4d38e-8068-47ec-8c00-6eaf1bf21de1" />
 
 ### Tasks Page
-
-![Tasks](screenshots/tasks.png)
+<img width="1346" height="635" alt="image" src="https://github.com/user-attachments/assets/65519f4c-7083-4829-9146-620077f55ff9" />
 
 ### Analytics Page
-
-![Analytics](screenshots/analytics.png)
+<img width="1353" height="626" alt="image" src="https://github.com/user-attachments/assets/bf574f4d-730e-4c07-bbb2-1beaa2f03b18" />
 
 ## Installation
 
@@ -212,35 +211,8 @@ npm run dev
 | npm run build   | Create production build     |
 | npm run preview | Preview production build    |
 
-## Learning Outcomes
-
-This project helped improve knowledge in:
-
-* Full Stack Development
-* REST APIs
-* MongoDB Database Design
-* JWT Authentication
-* React State Management
-* Context API
-* Backend Integration
-* Deployment Workflows
-
-## Future Improvements
-
-* Task Categories
-* Team Collaboration
-* Calendar View
-* Email Notifications
-* Drag and Drop Tasks
-* Mobile Application
-* Real-Time Updates
-
-## License
-
-MIT License
 
 ## Author
 
 **Shravan Das**
 
-Built with React, Node.js, Express.js, and MongoDB.
